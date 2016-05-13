@@ -1,9 +1,33 @@
-var keys = require('./keys.js');
-var Sequelize = require('sequelize');
-var source = keys.mySQLKeys.jawsDB;
 
-var sequelize = new Sequelize(source.database, source.user, source.password, {
-  host: source.host,
+var Sequelize = require('sequelize');
+
+var source = {
+
+	    localhost: {
+        port: 3306,
+        host: 'localhost',
+        user: 'root',
+        password: "Deanie313581",
+        database: "burgers_db"
+    },
+
+        jawsDB: {
+        port: 3306,
+        host: 'bqmayq5x95g1sgr9.cbetxkdyhwsb.us-east-1.rds.amazonaws.com',
+        user: 'r9fyxpy3qgbv7h3q',
+        password: "g5i0cu8wx827zkzh",
+        database: "cn6jr7jz6yo7p6ai" 
+ 
+    }
+}
+
+
+var selectedSource = source.jawsDB;
+
+
+
+var sequelize = new Sequelize(selectedSource.database, selectedSource.user, selectedSource.password, {
+  host: selectedSource.host,
   dialect: 'mysql',
 
   pool: {
@@ -14,4 +38,5 @@ var sequelize = new Sequelize(source.database, source.user, source.password, {
 
 });
 
+// Exports the connection for other files to use
 module.exports = sequelize;
