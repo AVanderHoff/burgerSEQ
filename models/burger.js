@@ -5,7 +5,7 @@ var sequelize = require("../config/connection.js");
 
 
 
-var Burger = sequelize.define("burgers_table", {
+var burgers_table = sequelize.define("burgers_table", {
 	id: {
 		type: Sequelize.INTEGER,
 		autoIncrement: true,
@@ -22,10 +22,20 @@ var Burger = sequelize.define("burgers_table", {
 	}
 
 
+},
+{
+freezeTableName: true 
 });
 
 
-Burger.sync();
+burgers_table.sync({force: true}).then(function () {
+	console.log("created");
+		});
 
 
-module.exports = Burger;
+
+
+
+
+
+module.exports = burgers_table;
