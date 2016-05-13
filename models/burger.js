@@ -28,9 +28,7 @@ freezeTableName: true
 });
 
 
-burgers_table.sync({force: true}).then(function () {
-	console.log("created");
-		});
+burgers_table.sync({force: true});
 
 
 
